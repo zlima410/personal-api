@@ -1,0 +1,95 @@
+{
+  "data": {
+    "metrics": [
+      {
+        "name": "step_count",
+        "units": "count",
+        "data": [
+          {
+            "date": "2024-02-06 00:00:00 -0800",
+            "qty": 8421
+          }
+        ]
+      },
+      {
+        "name": "sleep_analysis",
+        "units": "hr",
+        "data": [
+          {
+            "date": "2024-02-06",
+            "totalSleep": 7.5,
+            "asleep": 7.0,
+            "core": 3.5,
+            "deep": 1.5,
+            "rem": 2.0,
+            "awake": 0.4,
+            "sleepStart": "2024-02-05 23:00:00 -0800",
+            "sleepEnd": "2024-02-06 07:00:00 -0800",
+            "inBed": 8.0,
+            "inBedStart": "2024-02-05 22:45:00 -0800",
+            "inBedEnd": "2024-02-06 07:15:00 -0800",
+            "source": "Apple Watch"
+          },
+          {
+            "date": "2024-02-07",
+            "totalSleep": 6.25,
+            "asleep": 6.0,
+            "core": 3.0,
+            "deep": 1.25,
+            "rem": 1.5,
+            "sleepStart": "2024-02-06 23:40:00 -0800",
+            "sleepEnd": "2024-02-07 06:20:00 -0800",
+            "inBed": 6.75,
+            "inBedStart": "2024-02-06 23:30:00 -0800",
+            "inBedEnd": "2024-02-07 06:25:00 -0800",
+            "source": "Apple Watch"
+          }
+        ]
+      }
+    ],
+    "workouts": [
+      {
+        "id": "11111111-2222-4333-8444-555555555555",
+        "name": "Running",
+        "start": "2024-02-06 17:05:00 -0800",
+        "end": "2024-02-06 17:35:00 -0800",
+        "duration": 1800,
+        "activeEnergyBurned": {
+          "qty": 350,
+          "units": "kcal"
+        },
+        "distance": {
+          "qty": 3.5,
+          "units": "mi"
+        },
+        "avgHeartRate": {
+          "qty": 150,
+          "units": "bpm"
+        },
+        "heartRate": {
+          "avg": {
+            "qty": 150,
+            "units": "bpm"
+          }
+        }
+      },
+      {
+        "id": "66666666-7777-4888-8999-aaaaaaaaaaaa",
+        "name": "Traditional Strength Training",
+        "start": "2024-02-07 12:00:00 -0800",
+        "end": "2024-02-07 12:45:00 -0800",
+        "duration": 2700,
+        "activeEnergyBurned": {
+          "qty": 920,
+          "units": "kJ"
+        },
+        "heartRate": {
+          "avg": {
+            "qty": 118,
+            "units": "bpm"
+          }
+        }
+      }
+    ]
+  }
+}
