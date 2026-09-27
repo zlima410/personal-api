@@ -41,3 +41,5 @@ def api_key_dependency(setting_name: str) -> Callable[[str | None], None]:
 
 
 require_ingest_key = api_key_dependency("ingest_api_key")
+require_read_key = api_key_dependency("read_api_key")
+require_admin_key = api_key_dependency("admin_api_key")

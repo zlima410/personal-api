@@ -14,6 +14,8 @@ dependencies = [
     "psycopg[binary]>=3.3.6",
     "pydantic-settings>=2.15.0",
     "sqlalchemy>=2.1.1",
+    # ZoneInfo has no tz database on Windows or slim container images.
+    "tzdata>=2026.4",
     "uvicorn[standard]>=0.54.0",
 ]
 
