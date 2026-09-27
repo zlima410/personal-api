@@ -1,2 +1,9 @@
-# personal-api
-Personal API for tracking my own data.
+# Personal API
+
+A read-only personal data API built with FastAPI.
+
+## Setup
+
+```bash
+uv sync
+cp .env.example .env

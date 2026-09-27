@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: personal_api
+      POSTGRES_PASSWORD: personal_api
+      POSTGRES_DB: personal_api
+    ports:
+      - "5432:5432"
+    volumes:
+      - personal_api_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U personal_api -d personal_api"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  personal_api_postgres_data: 
