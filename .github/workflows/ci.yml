@@ -1,0 +1,55 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: personal_api
+          POSTGRES_PASSWORD: personal_api
+          POSTGRES_DB: personal_api
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U personal_api -d personal_api"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      DATABASE_URL: postgresql+psycopg://personal_api:personal_api@localhost:5432/personal_api
+      # Settings has no defaults for these, so they must exist for any test
+      # that imports the app. Values are throwaway.
+      GITHUB_USERNAME: ci-user
+      INGEST_API_KEY: ci-ingest-key
+      ADMIN_API_KEY: ci-admin-key
+      READ_API_KEY: ci-read-key
+      TIMEZONE: America/Chicago
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Apply migrations
+        run: uv run alembic upgrade head
+
+      - name: Test
+        run: uv run pytest

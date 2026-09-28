@@ -1,0 +1,35 @@
+name: sync
+
+on:
+  schedule:
+    # 17 minutes past every 6th hour, UTC: 00:17, 06:17, 12:17, 18:17.
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+# A slow run should never overlap the next scheduled one.
+concurrency:
+  group: sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Sync GitHub commits
+        run: |
+          curl --fail-with-body -sS -X POST \
+            -H "X-API-Key: ${{ secrets.ADMIN_API_KEY }}" \
+            --retry 3 --retry-delay 20 --retry-all-errors --retry-connrefused \
+            --max-time 120 \
+            "${{ secrets.API_BASE_URL }}/admin/sync/github"
+
+      - name: Sync Hardcover library
+        # Runs even when the GitHub step failed: the two are independent.
+        if: always()
+        run: |
+          curl --fail-with-body -sS -X POST \
+            -H "X-API-Key: ${{ secrets.ADMIN_API_KEY }}" \
+            --retry 3 --retry-delay 20 --retry-all-errors --retry-connrefused \
+            --max-time 120 \
+            "${{ secrets.API_BASE_URL }}/admin/sync/hardcover"

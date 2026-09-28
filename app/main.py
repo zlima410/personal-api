@@ -18,6 +18,6 @@ app.include_router(ingest.router)
 app.include_router(admin.router)
 
 
-@app.get("/health", tags=["meta"])
-def health() -> dict[str, str]:
+@app.get("/healthz", tags=["meta"])
+def healthz() -> dict[str, str]:
     return {"status": "ok"}

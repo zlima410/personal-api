@@ -1,0 +1,27 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+
+# Local virtualenv and caches
+.venv
+__pycache__/
+*.py[codz]
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+
+# Version control and CI
+.git
+.gitignore
+.gitattributes
+.github/
+
+# Not needed in a runtime image
+tests/
+books.example.csv
+docker-compose.yml
+README.md
+LICENSE
+Dockerfile
+.dockerignore
