@@ -2,8 +2,8 @@ name: sync
 
 on:
   schedule:
-    # 17 minutes past every 6th hour, UTC: 00:17, 06:17, 12:17, 18:17.
-    - cron: "17 */6 * * *"
+    # 17 minutes past every 6th hour, UTC: 00:17, 12:17.
+    - cron: "17 */12 * * *"
   workflow_dispatch:
 
 # A slow run should never overlap the next scheduled one.
